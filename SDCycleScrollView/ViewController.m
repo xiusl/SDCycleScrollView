@@ -32,6 +32,7 @@
 #import "SDCycleScrollView.h"
 #import "CustomCollectionViewCell.h"
 #import "UIImageView+WebCache.h"
+#import "FixSDCycleScrollView.h"
 
 @interface ViewController () <SDCycleScrollViewDelegate>
 
@@ -161,6 +162,15 @@
     _customCellScrollViewDemo.imageURLStringsGroup = imagesURLStrings;
     
     [demoContainerView addSubview:_customCellScrollViewDemo];
+    
+    
+// >>>>>>>>>>>>>>>>>>>>>>>>> demo轮播图6 左右留白 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+        
+    // 如果要实现自定义cell的轮播图，必须先实现customCollectionViewCellClassForCycleScrollView:和setupCustomCell:forIndex:代理方法
+    
+    FixSDCycleScrollView *cycleScrollView1 = [FixSDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 960, w, 180) shouldInfiniteLoop:YES imageNamesGroup:imageNames];
+    cycleScrollView1.backgroundColor = [UIColor clearColor];
+    [demoContainerView addSubview:cycleScrollView1];
 }
 
 - (void)viewWillAppear:(BOOL)animated
